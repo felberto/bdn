@@ -6,7 +6,8 @@ from mrjob.job import MRJob
 class MapReduce1(MRJob):
     def mapper(self, _, line):
         lineList = line.split(',')
-        if lineList[0] == 'res_send':
+        if 'res_send' in lineList[0]:
+            print(math.ceil(int(lineList[6]) / 60000.0), 1)
             yield math.ceil(int(lineList[6]) / 60000.0), 1
 
     def reducer(self, key, values):
