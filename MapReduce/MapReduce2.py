@@ -1,9 +1,18 @@
 import math
 
 from mrjob.job import MRJob
+from mrjob.step import MRStep
 
 
 class MapReduce2(MRJob):
+
+    def steps(self):
+        return [
+            MRStep(mapper=self.mapper,
+                   reducer=self.reducer1),
+            MRStep(combiner=self.combiner,
+                   reducer=self.reducer2)
+        ]
 
     def mapper(self, _, line):
         lineList = line.split(',')
