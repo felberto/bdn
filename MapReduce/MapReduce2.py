@@ -1,7 +1,6 @@
 import math
 
 from mrjob.job import MRJob
-from mrjob.step import MRStep
 
 
 class MapReduce2(MRJob):
@@ -9,7 +8,7 @@ class MapReduce2(MRJob):
     def mapper(self, _, line):
         lineList = line.split(',')
         if '0' and '-1' not in lineList[1]:
-            yield str(lineList[1]) + ':' + str(lineList[2]), int(lineList[6])
+            yield str(lineList[1]) + ":" + str(lineList[2]), int(lineList[6])
 
     def reducer1(self, key, values):
         values = list(values)
