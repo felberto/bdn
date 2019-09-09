@@ -29,6 +29,7 @@ class MapReduce2(MRJob):
         yield key, [sum(values), len(values)]
 
     def reducer2(self, key, values):
+        values = list(zip(*list(values)))
         yield key, sum(values[0]) / sum(values[1])
 
 
