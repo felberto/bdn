@@ -7,8 +7,8 @@ class MapReduce2(MRJob):
 
     def mapper(self, _, line):
         lineList = line.split(',')
-        if '0' and '-1' not in lineList[1]:
-            yield str(lineList[1]) + ':' + str(lineList[2]), float(lineList[6])
+        if lineList[1] != 'client_id' and lineList[1] != -1 and lineList[1] != 0:
+            yield str(lineList[1]) + ':' + str(lineList[2]), int(lineList[6])
 
     def reducer1(self, key, values):
         values = list(values)
