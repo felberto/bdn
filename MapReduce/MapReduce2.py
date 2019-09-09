@@ -16,7 +16,7 @@ class MapReduce2(MRJob):
 
     def mapper(self, _, line):
         lineList = line.split(',')
-        if lineList[0] == 'msg_snd' and lineList[0] == 'res_rcv':
+        if lineList[0] == 'msg_snd' or lineList[0] == 'res_rcv':
             if lineList[1] != -1 and lineList[1] != 0:
                 yield str(lineList[1]) + ':' + str(lineList[2]), int(lineList[6])
 
