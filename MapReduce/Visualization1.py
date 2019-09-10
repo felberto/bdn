@@ -6,7 +6,7 @@ result['minute'] = result['minute'] - result['minute'].min()
 result = result.sort_values('minute')
 
 plt.plot(result['minute'], result['throughput'])
-plt.xlabel('minute')
-plt.ylabel('throughput')
+plt.xlabel('Minute')
+plt.ylabel('Throughput')
 
 plt.show()
